@@ -85,42 +85,5 @@ resource "aws_route53_record" "jenkins-agent" {
   allow_overwrite = true
 }
 
-# ─────────────────────────────────────────────
-# Purpose: Create multiple ECR repositories using for_each
-# ─────────────────────────────────────────────
 
-resource "aws_ecr_repository" "ecr_repos" {
-  for_each             = toset(var.ecr_repo_names)
-  name                 = each.value
-  image_tag_mutability = var.image_tag_mutability
-
-  tags = {
-    Environment = var.environment
-    Project     = var.project
-  }
-}
-
-resource "aws_ecr_lifecycle_policy" "ecr_policies" {
-  for_each   = aws_ecr_repository.ecr_repos
-
-  repository = each.value.name
-
-  policy = jsonencode({
-    rules = [
-      {
-        rulePriority = 1
-        description  = "Expire untagged images older than 30 days"
-        selection = {
-          tagStatus     = "untagged"
-          countType     = "sinceImagePushed"
-          countUnit     = "days"
-          countNumber   = 30
-        }
-        action = {
-          type = "expire"
-        }
-      }
-    ]
-  })
-}
 
