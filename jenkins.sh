@@ -1,4 +1,3 @@
-
 #!/bin/bash
 
 #resize disk from 20GB to 50GB

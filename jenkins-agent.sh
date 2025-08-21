@@ -1,6 +1,4 @@
-
 #!/bin/bash
-
 #resize disk from 20GB to 50GB in AWS Console
 growpart /dev/nvme0n1 4
 
