@@ -19,3 +19,13 @@ variable "zone_id" {
   description = "description"
 }
 
+variable "ecr_repo_names" {
+  default = ["catalogue", "catalogue-cd", "Infra"]
+}
+
+variable "image_tag_mutability" {
+  description = "Tag mutability setting for ECR images"
+  type        = string
+  default     = "MUTABLE"
+}
+
