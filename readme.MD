@@ -15,11 +15,14 @@ Plugins:
 Restart Jenkins once plugins are installed
 
 ### Manage Credentials:
-* We need to add ssh credentials for Jenkins to connect to agent. I am using ID as ssh-auth
+* We need to add ssh credentials for Jenkins to connect to agent. I am using ID as ssh-auth.
 * We need to add aws credentials for Jenkins to connect with AWS for deployments. I am using
-    * aws-creds-dev
-    * aws-creds-prod
     * aws-creds
+    * aws-creds-prod
+    * aws-creds-dev
+* Connect to SonarQube EC2 instance from EC2 connect in AWS console UI.
+* We need to get security token from my account in sonarqube.
+* We need to add Sonar credentials for Jenkins to connect with Sonar Server. I am using  sonar-auth as ID.
 
 ### Configure Master and Agent
 
